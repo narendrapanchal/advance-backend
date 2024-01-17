@@ -1,0 +1,20 @@
+target: "http://localhost:8010"
+phases:
+  - duration: 60
+    arrivalRate: 5
+    rampTo: 10
+    name: Warm up the API
+  - duration: 60
+    arrivalRate: 10
+    rampTo: 50
+    name: Ramp up to peak load
+  - duration: 300
+    arrivalRate: 50
+    name: Sustained peak load
+scenarios:
+  - name: Get 3 animal pictures
+    flow:
+      -loop:
+        - get:
+            url: "/rides"
+      count: 100

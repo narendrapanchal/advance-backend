@@ -8,8 +8,14 @@
   },
   "scripts": {
     "test": "mocha tests/api.test.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "npx eslint .",
+    "test:load": "npm start & sleep 5 && artillery run --output report.json load-test.yml && kill $! && artillery report --output report.html report.json"
   },
+  "pre-push": [
+    "test",
+    "start"
+  ],
   "keywords": [
     "Xendit"
   ],
@@ -22,7 +28,17 @@
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "eslint-plugin-node": "^11.1.0",
     "mocha": "^6.1.4",
+    "pre-push": "^0.1.4",
     "supertest": "^4.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narendrapanchal/advance-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/narendrapanchal/advance-backend/issues"
+  },
+  "homepage": "https://github.com/narendrapanchal/advance-backend#readme"
 }

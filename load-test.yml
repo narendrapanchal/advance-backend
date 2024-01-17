@@ -1,0 +1,15 @@
+scenarios:
+  - flow:
+      - post:
+          url: '/rides'
+          json:
+            start_lat: -33.8688
+            start_long: 151.2093
+            end_lat: -34.8688
+            end_long: 152.2093
+            rider_name: 'John Doe'
+            driver_name: 'Jane Doe'
+            driver_vehicle: 'Car'
+        capture:
+          - json: '$.rideID'
+            as: 'rideId'
